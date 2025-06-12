@@ -73,6 +73,7 @@ UPDATE layoffs_staging2
 SET `date` = STR_TO_DATE(`date`, '%m/%d/%Y');
 ```
 
+#### 3. Working with Null and blank values
 
 
 
