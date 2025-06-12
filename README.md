@@ -29,36 +29,38 @@ I started off with creating a staging table which I will use for making all chan
 
     ```
      SELECT company, TRIM(company)
-FROM layoffs_staging2;
+    FROM layoffs_staging2;
+    
+    UPDATE layoffs_staging2
+    SET company = TRIM(company);
+    ```
 
-UPDATE layoffs_staging2
-SET company = TRIM(company);
-```
 
 ##### 2b. Correct Misspelled Data
+
 - I assessed data in all columns and realized  that there was duplicated information due to misspelled data or punctuation. I corrected this using the following syntax
 
   ```
- SELECT DISTINCT COUNTRY
-FROM layoffs_staging2
-ORDER BY 1;
+    SELECT DISTINCT COUNTRY
+    FROM layoffs_staging2
+    ORDER BY 1;
 
-SELECT *
-FROM layoffs_staging2;
+    SELECT *
+    FROM layoffs_staging2;
 
-SELECT DISTINCT *
-FROM layoffs_staging2
-WHERE country LIKE 'United States%'
-ORDER BY 1;
+    SELECT DISTINCT *
+    FROM layoffs_staging2
+    WHERE country LIKE 'United States%'
+    ORDER BY 1;
 
-SELECT DISTINCT country, TRIM(TRAILING '.' FROM country)
-FROM layoffs_staging2
-WHERE country LIKE 'United States%';
+    SELECT DISTINCT country, TRIM(TRAILING '.' FROM country)
+    FROM layoffs_staging2
+    WHERE country LIKE 'United States%';
 
-UPDATE layoffs_staging2
-SET country = TRIM(TRAILING '.' FROM country)
-WHERE country LIKE 'United States%'; 
-```
+    UPDATE layoffs_staging2
+    SET country = TRIM(TRAILING '.' FROM country)
+    WHERE country LIKE 'United States%';
+  ```
 
 ##### 2c. Change Date from text to Timeformat
 - In the original dataset, the `date` column was set as a text and not time formart and i changed that using this syntax:
